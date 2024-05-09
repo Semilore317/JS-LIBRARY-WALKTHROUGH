@@ -1,0 +1,1 @@
+{"version":3,"sources":["library-styles.scss","library-styles.css"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;ACCJ","file":"library-styles.css","sourcesContent":["*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}","* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}"]}
