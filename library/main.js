@@ -22,6 +22,22 @@ createBookElement = (el, content, className) => {
   return element;
 };
 
+createBookElement = (bookItem, book) => {
+  const read = document.createElement("div");
+  read.setAttribute("class", "book-read");
+  read.appendChild(createBookElement("h1", "Read?", "book-read-title"));
+
+  const input = document.createElement('input');
+  input.type = 'checkbox'
+  input.addEventListener('click', (e) =>{
+    if(e.target.check){
+      bookItem.setAttribute('class', 'read-checked')
+      book.read = true
+      renderBooks{}
+    }
+  })
+};
+
 createBookItem = (book, index) => {
   const bookItem = document.createElement("div");
   bookItem.setAttribute("id", index);
@@ -36,6 +52,7 @@ createBookItem = (book, index) => {
   bookItem.appendChild(
     createBookElement("h1", `Pages: ${book.pages}, "book-pages"`)
   );
+  bookItem.appendChild(createReadElement(bookItem, book));
   books.insertAdjacentElement("afterbegin", bookItem);
 };
 
@@ -45,11 +62,8 @@ renderBooks = () => {
   });
 };
 
-
 renderBooks();
 
-
-
 //tue/14/may
 //the off season
 
@@ -58,11 +72,8 @@ renderBooks();
 //tue/14/may
 //the off season
 
-
-
 //tue/14/may
 //the off season
-
 
 //tue/14/may
 //the off season
