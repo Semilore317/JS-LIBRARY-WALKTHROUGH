@@ -22,24 +22,29 @@ createBookElement = (el, content, className) => {
   return element;
 };
 
-createBookElement = (bookItem, book) => {
+createReadElement = (bookItem, book) => {
   const read = document.createElement("div");
   read.setAttribute("class", "book-read");
   read.appendChild(createBookElement("h1", "Read?", "book-read-title"));
-
-  const input = document.createElement('input');
-  input.type = 'checkbox'
-  input.addEventListener('click', (e) =>{
-    if(e.target.check){
-      bookItem.setAttribute('class', 'read-checked')
-      book.read = true
-      renderBooks()
-    }else{
-      bookItem.setAttribute('class', 'read-unchecked')
-      book.read = false
+  const input = document.createElement("input");
+  input.type = "checkbox";
+  input.addEventListener("click", (e) => {
+    if (e.target.check) {
+      bookItem.setAttribute("class", "read-checked");
+      book.read = true;
+      renderBooks();
+    } else {
+      bookItem.setAttribute("class", "read-unchecked");
+      book.read = false;
       renderBooks();
     }
-  })
+    if (book.read) {
+      input.checked = true;
+      bookItem.setAttribute("class", "read-checked");
+    }
+    read.appendChild(input);
+    return read;
+  });
 };
 
 createBookItem = (book, index) => {
@@ -48,13 +53,13 @@ createBookItem = (book, index) => {
   bookItem.setAttribute("key", index);
   bookItem.setAttribute("class", "card book");
   bookItem.appendChild(
-    createBookElement("h1", `Title: ${book.title}, "book-title"`)
+    createBookElement("h1", `Title: ${book.title}`, "book-title")
   );
   bookItem.appendChild(
-    createBookElement("h1", `Author: ${book.author}, "book-author"`)
+    createBookElement("h1", `Author: ${book.author}`, "book-author")
   );
   bookItem.appendChild(
-    createBookElement("h1", `Pages: ${book.pages}, "book-pages"`)
+    createBookElement("h1", `Pages: ${book.pages}`, "book-pages")
   );
   bookItem.appendChild(createReadElement(bookItem, book));
   books.insertAdjacentElement("afterbegin", bookItem);
