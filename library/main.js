@@ -33,7 +33,11 @@ createBookElement = (bookItem, book) => {
     if(e.target.check){
       bookItem.setAttribute('class', 'read-checked')
       book.read = true
-      renderBooks{}
+      renderBooks()
+    }else{
+      bookItem.setAttribute('class', 'read-unchecked')
+      book.read = false
+      renderBooks();
     }
   })
 };
